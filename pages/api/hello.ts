@@ -3,9 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 export const config = {
     api: {
-        bodyParser: {
-            bodyParser: false,
-        },
+        bodyParser: false,
     },
 }
 
@@ -19,7 +17,7 @@ async function buffer(readable: Readable) {
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
-        const buf = await buffer(req.body);
+        const buf = await buffer(req);
         const rawBody = buf.toString('utf8');
 
         // Can do something here...
